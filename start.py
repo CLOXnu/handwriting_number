@@ -45,4 +45,4 @@ def start(url):
     print(np.argmax(res))
 
 if __name__ == "__main__":
-    start('number_test/?.jpg')
+    start('number_test/2(1).jpg')
