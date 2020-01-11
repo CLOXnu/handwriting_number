@@ -12,11 +12,9 @@ def loadModel():
     new_model.summary()
     return new_model
 
-def showImage(image):
-    plt.figure()
-    plt.imshow(image)
-    plt.colorbar()
-    plt.grid(False)
+def showGrayImage(image):
+    plt.figure(1)
+    plt.imshow(image[:,:,0], cmap='gray')
     plt.show()
 
 def openImage(url):
@@ -27,8 +25,10 @@ def openImage(url):
     img = tf.image.rgb_to_grayscale(img)
     img = img.numpy()
 
+    return img
+
 def predict(model, image):
-    img_pre = img.reshape(-1, 28, 28, 1) / 255.0
+    img_pre = image.reshape(-1, 28, 28, 1) / 255.0
     img_pre.shape
 
     pre = model.predict(img_pre)
@@ -36,7 +36,7 @@ def predict(model, image):
 
 def start(url):
     img = openImage(url)
-    showImage(img)
+    showGrayImage(img)
     
     model = loadModel()
     res = predict(model, img)
@@ -45,4 +45,4 @@ def start(url):
     print(np.argmax(res))
 
 if __name__ == "__main__":
-    start('number_test/7.jpg')
+    start('number_test/?.jpg')
