@@ -1,0 +1,30 @@
+.add-pic {
+    width: 160px;
+    height: 160px;
+    text-align: center;
+}
+
+.add-pic .pic {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.add-pic .inp-flie-btn,
+.add-pic .img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.add-pic .inp-flie-btn {
+    opacity: 0;
+    z-index: 1;
+}
+
+.add-pic .ti {
+    line-height: 30px;
+}
