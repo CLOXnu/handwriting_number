@@ -34,12 +34,27 @@ def predict(model, image):
     pre = model.predict(img_pre)
     return pre
 
+def plot_pre(pre):
+    plt.grid(False)
+    plt.xticks(range(10))
+    plt.yticks([])
+    thisplot = plt.bar(range(10), pre, color="#777777")
+    plt.ylim([0, 1])
+    predicted_label = np.argmax(pre)
+    thisplot[predicted_label].set_color('blue')
+    for i in range(10):
+        plt.text(i, pre[i], '%.1f %%' % (pre[i]*100), ha='center', va='bottom')
+
+    plt.figure(1)
+    plt.show()
+
 def start(url):
     img = openImage(url)
     showGrayImage(img)
     
     model = loadModel()
     res = predict(model, img)
+    plot_pre(res[0])
 
     print(res)
     print(np.argmax(res))
